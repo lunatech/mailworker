@@ -1,11 +1,11 @@
 Collection of scripts to make it easy to deal with lot of email.
 
-h1. getfolderlist
+## getfolderlist
 
 Connects to a imap server and gets the folders on it.
 
-h2. todo
+## todo
 
-# better help
-# faster
+* better help
+* faster
 
