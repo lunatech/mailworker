@@ -1,0 +1,26 @@
+#!/usr/bin/perl -w
+
+use strict;
+use warnings;
+
+use Mail::IMAPClient;
+use Getopt::Long;
+
+my ($user,$pass,$host,$timeout) = (undef,undef,"localhost",30);
+my $result = GetOptions("user=s" => \$user,
+			"pass=s" => \$pass,
+			"host=s" => \$host,
+		        "timeout=i" => \$timeout
+		       );
+
+
+my $m = Mail::IMAPClient->new(
+			      Server   => $host,
+			      User     => $user,
+			      Password => $pass,
+			      Timeout  => $timeout,
+			      Uid      => 1			      
+			     ) or die ("error in connecting to $host "  . $!);
+
+(my $folders = $m->folders) or die "Could not list folders: $@\n";
+for (@$folders) { print $_ ,"\n";}
